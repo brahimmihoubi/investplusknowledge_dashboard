@@ -1,0 +1,8 @@
+{
+  "name": "Invest Plus Admin Dashboard",
+  "description": "A sophisticated, high-performance admin portal for Invest Plus Knowledge, featuring real-time analytics, member management, and AI-powered announcement generation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
