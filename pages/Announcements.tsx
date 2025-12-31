@@ -1,10 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { generateAnnouncementSummary } from '../services/geminiService';
 import { StorageService } from '../services/storageService';
 import { Announcement } from '../types';
 
 const Announcements: React.FC = () => {
+  const { t } = useTranslation();
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [topic, setTopic] = useState('');
   const [content, setContent] = useState('');
@@ -46,7 +48,7 @@ const Announcements: React.FC = () => {
   };
 
   const handleDelete = (id: string) => {
-    if (window.confirm('Are you sure you want to delete this announcement?')) {
+    if (window.confirm(t('confirmDeleteAnnouncement'))) {
       updateAnnouncements(announcements.filter(a => a.id !== id));
     }
   };
@@ -88,10 +90,10 @@ const Announcements: React.FC = () => {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in duration-700">
       <div className="lg:col-span-1 space-y-6">
         <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-          <h2 className="text-xl font-bold text-[#112b3c] mb-6">{editingId ? 'Edit Announcement' : 'Broadcast News'}</h2>
+          <h2 className="text-xl font-bold text-[#112b3c] mb-6">{editingId ? t('editAnnouncement') : t('broadcastNews')}</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2 block">Subject Line</label>
+              <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2 block">{t('subjectLine')}</label>
               <input 
                 type="text" 
                 value={topic}
@@ -102,21 +104,21 @@ const Announcements: React.FC = () => {
             </div>
             
             <div>
-               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2 block">Category</label>
+               <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] mb-2 block">{t('category')}</label>
                <select 
                  value={category} 
                  onChange={(e) => setCategory(e.target.value as any)}
                  className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:ring-2 focus:ring-emerald-500/10 focus:border-[#4ade80] outline-none transition-all"
                >
-                 <option value="News">News</option>
-                 <option value="Event">Event</option>
-                 <option value="Alert">Alert</option>
+                 <option value="News">{t('news')}</option>
+                 <option value="Event">{t('event')}</option>
+                 <option value="Alert">{t('alert')}</option>
                </select>
             </div>
 
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] block">Message Content</label>
+                <label className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.15em] block">{t('messageContent')}</label>
                 <button 
                   type="button"
                   onClick={handleGenerateAI}
@@ -126,12 +128,12 @@ const Announcements: React.FC = () => {
                   {isGenerating ? (
                     <span className="flex items-center gap-1">
                       <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                      Consulting AI
+                      {t('consultingAI')}
                     </span>
                   ) : (
                     <>
                       <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M13 2a2 2 0 00-2 2v2H2a2 2 0 00-2 2v7a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-3V4a2 2 0 00-2-2zM4 9h12v7H4V9z" /></svg>
-                      AI Assist
+                      {t('aiAssist')}
                     </>
                   )}
                 </button>
@@ -157,14 +159,14 @@ const Announcements: React.FC = () => {
                     }}
                     className="flex-1 py-3 bg-slate-100 text-slate-500 rounded-2xl font-bold hover:bg-slate-200 transition-all uppercase tracking-widest text-xs"
                   >
-                    Cancel
+                    {t('cancel')}
                   </button>
                 )}
                 <button 
                   type="submit"
                   className="flex-1 py-3 brand-gradient text-white rounded-2xl font-bold shadow-lg shadow-emerald-200 hover:opacity-90 transition-all uppercase tracking-widest text-xs"
                 >
-                  {editingId ? 'Update' : 'Post'}
+                  {editingId ? t('update') : t('post')}
                 </button>
             </div>
           </form>
@@ -173,21 +175,21 @@ const Announcements: React.FC = () => {
 
       <div className="lg:col-span-2 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-           <h2 className="text-xl font-bold text-[#112b3c]">Live Platform Feed</h2>
+           <h2 className="text-xl font-bold text-[#112b3c]">{t('livePlatformFeed')}</h2>
            <div className="flex gap-2">
               <select 
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
                 className="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:border-[#10B981] outline-none"
               >
-                <option value="All">All Categories</option>
-                <option value="News">News</option>
-                <option value="Event">Events</option>
-                <option value="Alert">Alerts</option>
+                <option value="All">{t('allCategories')}</option>
+                <option value="News">{t('news')}</option>
+                <option value="Event">{t('events')}</option>
+                <option value="Alert">{t('alerts')}</option>
               </select>
               <input 
                 type="text" 
-                placeholder="Search feed..." 
+                placeholder={t('searchFeed')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:border-[#10B981] outline-none w-48"
@@ -230,16 +232,16 @@ const Announcements: React.FC = () => {
               <div className="mt-5 pt-4 border-t border-slate-50 flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full brand-gradient flex items-center justify-center text-[8px] text-white font-bold">A</div>
-                  <span className="text-[10px] text-slate-400 font-bold tracking-wider uppercase">System Broadcast</span>
+                  <span className="text-[10px] text-slate-400 font-bold tracking-wider uppercase">{t('systemBroadcast')}</span>
                 </div>
                 <button className="text-[#059669] text-[10px] font-bold flex items-center gap-1 uppercase tracking-widest hover:translate-x-1 transition-transform">
-                  View Public Link <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
+                  {t('viewPublicLink')} <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" /></svg>
                 </button>
               </div>
             </div>
           ))}
           {filteredAnnouncements.length === 0 && (
-             <div className="text-center py-10 text-slate-400 text-sm font-medium">No announcements found.</div>
+             <div className="text-center py-10 text-slate-400 text-sm font-medium">{t('noAnnouncementsFound')}</div>
           )}
         </div>
       </div>

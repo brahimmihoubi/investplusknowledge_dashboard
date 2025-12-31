@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { StorageService } from '../services/storageService';
 import { Partner } from '../types';
 
 const Partners: React.FC = () => {
+  const { t } = useTranslation();
   const [partners, setPartners] = useState<Partner[]>([]);
   const [isAdding, setIsAdding] = useState(false);
 
@@ -43,7 +45,7 @@ const Partners: React.FC = () => {
   };
 
   const handleDelete = (id: string) => {
-    if (window.confirm('Are you sure you want to remove this partner?')) {
+    if (window.confirm(t('confirmDeletePartner'))) {
       updatePartners(partners.filter(p => p.id !== id));
     }
   };
@@ -78,8 +80,8 @@ const Partners: React.FC = () => {
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-800">Strategic Partners</h1>
-          <p className="text-slate-500 text-sm">Manage partnerships and collaborations.</p>
+          <h1 className="text-2xl font-bold text-slate-800">{t('partnersTitle')}</h1>
+          <p className="text-slate-500 text-sm">{t('partnersSubtitle')}</p>
         </div>
         <div className="flex items-center gap-3">
           <div className="relative">
@@ -88,16 +90,16 @@ const Partners: React.FC = () => {
                onChange={(e) => setStatusFilter(e.target.value)}
                className="pl-4 pr-8 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-[#10B981] outline-none shadow-sm appearance-none cursor-pointer"
              >
-               <option value="All">All Status</option>
-               <option value="Active">Active</option>
-               <option value="Inactive">Inactive</option>
+               <option value="All">{t('allStatus')}</option>
+               <option value="Active">{t('active')}</option>
+               <option value="Inactive">{t('inactive')}</option>
              </select>
              <svg className="w-4 h-4 absolute right-3 top-3 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
           </div>
           <div className="relative">
             <input 
               type="text" 
-              placeholder="Search partners..." 
+              placeholder={t('searchPartners')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-[#10B981] outline-none w-64 shadow-sm"
@@ -109,17 +111,17 @@ const Partners: React.FC = () => {
             className="px-5 py-2.5 bg-[#10B981] text-white rounded-xl text-sm font-semibold hover:bg-[#064E3B] shadow-md shadow-emerald-200 transition-all flex items-center gap-2"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
-            Add New Partner
+            {t('addPartner')}
           </button>
         </div>
       </div>
 
       {isAdding && (
          <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
-           <h2 className="text-lg font-bold text-slate-800 mb-4">{editingId ? 'Edit Partner' : 'Add New Partner'}</h2>
+           <h2 className="text-lg font-bold text-slate-800 mb-4">{editingId ? t('editPartner') : t('addPartner')}</h2>
            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
              <div>
-               <label className="block text-sm font-medium text-slate-700 mb-1">Company Name</label>
+               <label className="block text-sm font-medium text-slate-700 mb-1">{t('companyName')}</label>
                <input 
                  type="text" 
                  value={formData.name}
@@ -128,7 +130,7 @@ const Partners: React.FC = () => {
                />
              </div>
              <div>
-               <label className="block text-sm font-medium text-slate-700 mb-1">Partnership Type</label>
+               <label className="block text-sm font-medium text-slate-700 mb-1">{t('partnershipType')}</label>
                <input 
                  type="text" 
                  value={formData.type}
@@ -138,7 +140,7 @@ const Partners: React.FC = () => {
                />
              </div>
              <div>
-               <label className="block text-sm font-medium text-slate-700 mb-1">Website</label>
+               <label className="block text-sm font-medium text-slate-700 mb-1">{t('website')}</label>
                <input 
                  type="url" 
                  value={formData.website}
@@ -148,14 +150,14 @@ const Partners: React.FC = () => {
                />
              </div>
              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Status</label>
+                <label className="block text-sm font-medium text-slate-700 mb-1">{t('status')}</label>
                 <select 
                    value={formData.status}
                    onChange={(e) => setFormData({...formData, status: e.target.value as any})}
                    className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-[#10B981] outline-none"
                 >
-                  <option value="Active">Active</option>
-                  <option value="Inactive">Inactive</option>
+                  <option value="Active">{t('active')}</option>
+                  <option value="Inactive">{t('inactive')}</option>
                 </select>
              </div>
            </div>
@@ -164,13 +166,13 @@ const Partners: React.FC = () => {
                  onClick={() => setIsAdding(false)}
                  className="px-4 py-2 text-slate-500 font-medium hover:bg-slate-50 rounded-lg transition-colors"
                >
-                 Cancel
+                  {t('cancel')}
                </button>
                <button 
                  onClick={handleSave}
                  className="px-6 py-2 bg-[#10B981] text-white font-semibold rounded-lg hover:bg-[#064E3B] transition-colors"
                >
-                 {editingId ? 'Update Partner' : 'Save Partner'}
+                 {editingId ? t('updatePartner') : t('savePartner')}
                </button>
            </div>
          </div>
@@ -201,9 +203,9 @@ const Partners: React.FC = () => {
             <p className="text-sm text-emerald-600 font-medium mb-4">{partner.type}</p>
             
             <div className="flex items-center justify-between text-xs text-slate-500 pt-4 border-t border-slate-50">
-               <span>Since {partner.partnershipDate}</span>
+               <span>{t('since')} {partner.partnershipDate}</span>
                <a href={partner.website} target="_blank" rel="noreferrer" className="text-blue-500 hover:underline">
-                 Visit Website
+                 {t('visitWebsite')}
                </a>
             </div>
           </div>
