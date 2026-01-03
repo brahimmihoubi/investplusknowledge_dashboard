@@ -176,11 +176,11 @@ const Announcements: React.FC = () => {
       <div className="lg:col-span-2 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
            <h2 className="text-xl font-bold text-[#112b3c]">{t('livePlatformFeed')}</h2>
-           <div className="flex gap-2">
+           <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
               <select 
                 value={filterCategory}
                 onChange={(e) => setFilterCategory(e.target.value)}
-                className="px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:border-[#10B981] outline-none"
+                className="w-full sm:w-auto px-3 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:border-[#10B981] outline-none"
               >
                 <option value="All">{t('allCategories')}</option>
                 <option value="News">{t('news')}</option>
@@ -192,7 +192,7 @@ const Announcements: React.FC = () => {
                 placeholder={t('searchFeed')}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:border-[#10B981] outline-none w-48"
+                className="w-full sm:w-48 px-4 py-2 bg-white border border-slate-200 rounded-xl text-xs font-bold focus:border-[#10B981] outline-none"
               />
            </div>
         </div>
