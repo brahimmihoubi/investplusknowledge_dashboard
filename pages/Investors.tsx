@@ -118,7 +118,7 @@ const Investors: React.FC = () => {
       </div>
 
       {isAdding && (
-         <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
+         <div className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
            <h2 className="text-lg font-bold text-slate-800 mb-4">{editingId ? t('editInvestor') : t('addInvestor')}</h2>
            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
              <div>

@@ -150,14 +150,14 @@ const Registrations: React.FC = () => {
       {selectedReg && (
          <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
             <div className="bg-white rounded-3xl shadow-xl w-full max-w-2xl overflow-hidden">
-               <div className="p-6 border-b border-slate-100 flex justify-between items-center">
+               <div className="p-4 md:p-6 border-b border-slate-100 flex justify-between items-center">
                   <h2 className="text-xl font-bold text-slate-800">Review Application</h2>
                   <button onClick={() => setSelectedReg(null)} className="text-slate-400 hover:text-slate-600">
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                   </button>
                </div>
                
-               <div className="p-6 space-y-6">
+               <div className="p-4 md:p-6 space-y-6">
                   <div className="flex items-start gap-4">
                      <div className="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center text-2xl font-bold text-slate-400">
                         {selectedReg.name.charAt(0)}
@@ -191,7 +191,7 @@ const Registrations: React.FC = () => {
                   </div>
                </div>
 
-               <div className="p-6 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
+               <div className="p-4 md:p-6 bg-slate-50 border-t border-slate-100 flex justify-end gap-3">
                   {selectedReg.status === 'Pending' ? (
                      <>
                         <button 

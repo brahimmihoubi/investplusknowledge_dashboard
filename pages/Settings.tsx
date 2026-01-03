@@ -19,7 +19,7 @@ const Settings: React.FC = () => {
     <div className="space-y-6 animate-in fade-in duration-500">
        
        {/* Profile Section */}
-       <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+       <div className="bg-white p-4 md:p-8 rounded-3xl shadow-sm border border-slate-100">
           <div className="flex items-center justify-between mb-6">
              <h2 className="text-xl font-bold text-slate-800">Admin Profile</h2>
              <button 
@@ -83,7 +83,7 @@ const Settings: React.FC = () => {
        </div>
 
        {/* System Settings Section */}
-      <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+      <div className="bg-white p-4 md:p-8 rounded-3xl shadow-sm border border-slate-100">
         <h2 className="text-xl font-bold text-slate-800 mb-6">System Configuration</h2>
         <div className="space-y-6">
           

@@ -146,7 +146,7 @@ const Members: React.FC = () => {
       </div>
 
       {isAdding && (
-         <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
+         <div className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
            <h2 className="text-lg font-bold text-slate-800 mb-4">{editingId ? t('edit') : t('addNew')}</h2>
            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
              <div>
@@ -226,18 +226,18 @@ const Members: React.FC = () => {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50 text-slate-400 text-[11px] uppercase tracking-wider font-bold">
-                <th className="px-8 py-4">{t('name')}</th>
-                <th className="px-8 py-4">{t('role')}</th>
-                <th className="px-8 py-4">{t('status')}</th>
-                <th className="px-8 py-4">{t('joined')}</th>
-                <th className="px-8 py-4 text-right">{t('investment')}</th>
-                <th className="px-8 py-4">{t('actions')}</th>
+                <th className="px-6 py-4">{t('name')}</th>
+                <th className="px-6 py-4">{t('role')}</th>
+                <th className="px-6 py-4">{t('status')}</th>
+                <th className="px-6 py-4">{t('joined')}</th>
+                <th className="px-6 py-4 text-right">{t('investment')}</th>
+                <th className="px-6 py-4">{t('actions')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
               {filteredMembers.map((member) => (
                 <tr key={member.id} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="px-8 py-4">
+                  <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 font-bold border-2 border-white shadow-sm">
                         {member.name.charAt(0)}
@@ -248,22 +248,22 @@ const Members: React.FC = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="px-8 py-4">
+                  <td className="px-6 py-4">
                     <span className={`text-xs font-semibold px-2 py-1 rounded-lg ${getRoleBadgeColor(member.role)}`}>
                       {t(member.role.toLowerCase())}
                     </span>
                   </td>
-                  <td className="px-8 py-4">
+                  <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       <div className={`w-2 h-2 rounded-full ${member.status === 'Active' ? 'bg-[#10B981]' : 'bg-slate-300'}`}></div>
                       <span className="text-sm text-slate-600">{t(member.status.toLowerCase())}</span>
                     </div>
                   </td>
-                  <td className="px-8 py-4 text-sm text-slate-500">{member.joinedDate}</td>
-                  <td className="px-8 py-4 text-sm font-bold text-slate-800 text-right">
+                  <td className="px-6 py-4 text-sm text-slate-500">{member.joinedDate}</td>
+                  <td className="px-6 py-4 text-sm font-bold text-slate-800 text-right">
                     {member.totalInvestment && member.totalInvestment > 0 ? `$${member.totalInvestment.toLocaleString()}` : '-'}
                   </td>
-                  <td className="px-8 py-4">
+                  <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       <button 
                         onClick={() => handleEditStart(member)}

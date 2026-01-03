@@ -99,7 +99,7 @@ const Methodology: React.FC = () => {
       </div>
 
       {isAdding && (
-         <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
+         <div className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
            <h2 className="text-lg font-bold text-slate-800 mb-4">{editingId ? 'Edit Step' : 'Add New Step'}</h2>
            <div className="space-y-4">
              <div>
@@ -151,7 +151,7 @@ const Methodology: React.FC = () => {
 
       <div className="flex flex-col gap-4">
         {filteredSteps.map((step) => (
-          <div key={step.id} className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition-all group">
+          <div key={step.id} className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 flex items-start gap-4 hover:shadow-md transition-all group">
             <div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 font-bold flex items-center justify-center shrink-0">
                {step.order}
             </div>

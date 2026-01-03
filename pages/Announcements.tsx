@@ -89,7 +89,7 @@ const Announcements: React.FC = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-in fade-in duration-700">
       <div className="lg:col-span-1 space-y-6">
-        <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+        <div className="bg-white p-4 md:p-8 rounded-3xl shadow-sm border border-slate-100">
           <h2 className="text-xl font-bold text-[#112b3c] mb-6">{editingId ? t('editAnnouncement') : t('broadcastNews')}</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -199,7 +199,7 @@ const Announcements: React.FC = () => {
         
         <div className="space-y-4">
           {filteredAnnouncements.map((ann) => (
-            <div key={ann.id} className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm hover:border-[#4ade80] transition-all group relative overflow-hidden">
+            <div key={ann.id} className="bg-white p-4 md:p-6 rounded-3xl border border-slate-100 shadow-sm hover:border-[#4ade80] transition-all group relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50/20 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform"></div>
               <div className="flex items-start justify-between mb-4 relative z-10">
                 <div className="flex items-center gap-3">

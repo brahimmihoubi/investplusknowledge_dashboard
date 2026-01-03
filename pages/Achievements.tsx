@@ -100,7 +100,7 @@ const Achievements: React.FC = () => {
       </div>
 
       {isAdding && (
-         <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
+         <div className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
            <h2 className="text-lg font-bold text-slate-800 mb-4">{editingId ? t('editMilestone') : t('addMilestone')}</h2>
            <div className="space-y-4">
              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -167,7 +167,7 @@ const Achievements: React.FC = () => {
         {filteredAchievements.map((item) => (
           <div key={item.id} className="relative pl-8 group">
             <div className="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-[#10B981] shadow-sm"></div>
-            <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-all relative">
+            <div className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-all relative">
                 <div className="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button 
                       onClick={() => handleEditStart(item)}

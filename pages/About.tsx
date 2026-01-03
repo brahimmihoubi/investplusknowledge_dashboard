@@ -107,7 +107,7 @@ const About: React.FC = () => {
       </div>
 
       {isAdding && (
-        <div className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
+        <div className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 mb-6 animate-in fade-in duration-300">
           <h2 className="text-lg font-bold text-slate-800 mb-4">{editingId ? t('editInfo') : t('addInfo')}</h2>
           <div className="space-y-4">
             <div>
@@ -164,7 +164,7 @@ const About: React.FC = () => {
 
       <div className="grid grid-cols-1 gap-4">
         {sections.map((section) => (
-          <div key={section.id} className="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
+          <div key={section.id} className="bg-white p-4 md:p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow group">
             <div className="flex justify-between items-start mb-3">
               <div className="flex items-center gap-3">
                  <h3 className="text-lg font-bold text-slate-800">{section.title}</h3>
