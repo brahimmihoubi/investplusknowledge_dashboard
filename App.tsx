@@ -169,7 +169,7 @@ const App: React.FC = () => {
           </div>
           </div>
           
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-6">
             <div className="relative" ref={notificationRef}>
               <button 
                 className="relative p-2 text-slate-400 hover:text-emerald-500 transition-colors outline-none"
