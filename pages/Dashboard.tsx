@@ -58,14 +58,14 @@ const Dashboard: React.FC = () => {
           <h1 className="text-2xl font-bold text-[#1F5F63]">{t('dashboardOverview')}</h1>
           <p className="text-slate-500 text-sm font-medium">{t('dashboardSubtitle')}</p>
         </div>
-        <div className="flex items-center gap-3">
-          <button className="px-5 py-2.5 bg-white border border-slate-200 text-[#1F5F63] rounded-xl text-sm font-bold hover:bg-slate-50 shadow-sm transition-all">
+        <div className="flex items-center gap-3 w-full md:w-auto">
+          <button className="w-full md:w-auto px-5 py-2.5 bg-white border border-slate-200 text-[#1F5F63] rounded-xl text-sm font-bold hover:bg-slate-50 shadow-sm transition-all">
             {t('exportReport')}
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatsCard 
           title={t('totalCapital')} 
           value={`$${stats.totalAssets.toLocaleString()}`} 
