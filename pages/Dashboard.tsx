@@ -143,17 +143,17 @@ const Dashboard: React.FC = () => {
           <table className="w-full text-left">
             <thead>
               <tr className="bg-slate-50 text-slate-400 text-[10px] uppercase tracking-widest font-bold">
-                <th className="px-8 py-4">{t('name')}</th>
-                <th className="px-8 py-4">{t('role')}</th>
-                <th className="px-8 py-4">{t('status')}</th>
-                <th className="px-8 py-4">{t('investment')}</th>
-                <th className="px-8 py-4">{t('joined')}</th>
+                <th className="px-4 md:px-8 py-4">{t('name')}</th>
+                <th className="px-4 md:px-8 py-4">{t('role')}</th>
+                <th className="px-4 md:px-8 py-4">{t('status')}</th>
+                <th className="px-4 md:px-8 py-4">{t('investment')}</th>
+                <th className="px-4 md:px-8 py-4">{t('joined')}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
               {recentMembers.map((member) => (
                 <tr key={member.id} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="px-8 py-4">
+                  <td className="px-4 md:px-8 py-4">
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-xs">
                         {member.name.charAt(0)}
@@ -164,23 +164,23 @@ const Dashboard: React.FC = () => {
                       </div>
                     </div>
                   </td>
-                  <td className="px-8 py-4 text-xs font-bold text-slate-500">
+                  <td className="px-4 md:px-8 py-4 text-xs font-bold text-slate-500">
                     {t(member.role.toLowerCase())}
                   </td>
-                  <td className="px-8 py-4">
+                  <td className="px-4 md:px-8 py-4">
                     <span className={`px-2 py-1 text-[10px] font-bold rounded-lg uppercase tracking-wider ${member.status === 'Active' ? 'bg-emerald-50 text-emerald-600' : 'bg-slate-100 text-slate-500'}`}>
                       {t(member.status.toLowerCase())}
                     </span>
                   </td>
-                  <td className="px-8 py-4 text-sm font-bold text-[#1F5F63]">
+                  <td className="px-4 md:px-8 py-4 text-sm font-bold text-[#1F5F63]">
                     {member.totalInvestment ? `$${member.totalInvestment.toLocaleString()}` : '-'}
                   </td>
-                  <td className="px-8 py-4 text-xs text-slate-400 font-medium">{member.joinedDate}</td>
+                  <td className="px-4 md:px-8 py-4 text-xs text-slate-400 font-medium">{member.joinedDate}</td>
                 </tr>
               ))}
               {recentMembers.length === 0 && (
                 <tr>
-                  <td colSpan={5} className="px-8 py-8 text-center text-slate-400 italic">{t('noData')}</td>
+                  <td colSpan={5} className="px-4 md:px-8 py-8 text-center text-slate-400 italic">{t('noData')}</td>
                 </tr>
               )}
             </tbody>
