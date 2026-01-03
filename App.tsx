@@ -24,6 +24,7 @@ const App: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [activePage, setActivePage] = useState<Page>('dashboard');
   const [adminProfile, setAdminProfile] = useState(StorageService.getAdminProfile());
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Notification State
   const [showNotifications, setShowNotifications] = useState(false);
@@ -132,17 +133,40 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex bg-[#f8fafc]">
-      <Sidebar activePage={activePage} setActivePage={setActivePage} />
+      <Sidebar 
+        activePage={activePage} 
+        setActivePage={setActivePage} 
+        isOpen={isSidebarOpen} 
+        onClose={() => setIsSidebarOpen(false)} 
+      />
       
-      <main className={`flex-1 p-8 min-h-screen transition-all duration-300 ${i18n.dir() === 'rtl' ? 'mr-64' : 'ml-64'}`}>
+      {/* Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-900/50 z-40 lg:hidden backdrop-blur-sm transition-opacity"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+      
+      <main className={`flex-1 p-4 lg:p-8 min-h-screen transition-all duration-300 ${i18n.dir() === 'rtl' ? 'lg:mr-64' : 'lg:ml-64'}`}>
         <header className="flex items-center justify-between mb-8">
-          <div className="relative">
+          <div className="flex items-center gap-4">
+            <button 
+              className="lg:hidden p-2 -ml-2 text-slate-500 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <div className="relative">
             <span className="text-sm text-slate-400 font-medium capitalize">
                {t('pages')} / {t(activePage)}
             </span>
             <h2 className="text-lg font-bold text-slate-800 mt-1 capitalize">
               {activePage === 'dashboard' ? t('overview') : t(activePage)}
             </h2>
+          </div>
           </div>
           
           <div className="flex items-center gap-6">

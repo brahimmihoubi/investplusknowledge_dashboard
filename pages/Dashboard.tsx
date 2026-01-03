@@ -97,7 +97,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+        <div className="bg-white p-4 md:p-8 rounded-3xl shadow-sm border border-slate-100">
            <div className="flex items-center justify-between mb-8">
              <h3 className="text-lg font-bold text-[#1F5F63]">{t('capitalFlow')}</h3>
            </div>
@@ -118,7 +118,7 @@ const Dashboard: React.FC = () => {
              </ResponsiveContainer>
            </div>
         </div>
-        <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+        <div className="bg-white p-4 md:p-8 rounded-3xl shadow-sm border border-slate-100">
            <div className="flex items-center justify-between mb-8">
              <h3 className="text-lg font-bold text-[#1F5F63]">{t('userGrowth')}</h3>
            </div>
@@ -135,7 +135,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
-        <div className="p-8 border-b border-slate-50 flex items-center justify-between">
+        <div className="p-4 md:p-8 border-b border-slate-50 flex items-center justify-between">
           <h3 className="text-lg font-bold text-[#1F5F63]">{t('recentMembers')}</h3>
           <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{t('liveUpdates')}</span>
         </div>
